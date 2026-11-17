@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Preserve existing single-page section IDs when modernizing content so existing anchor links remain valid.
+- Keep the irrigation demonstration client-only and conceptual, with its sequence in a tested browser-safe module; it must never imply connection to a physical device.
+- Contact forms prepare a message for the existing WhatsApp channel rather than simulate successful delivery; no message is reported as sent before the visitor sends it there.

@@ -1,7 +1,7 @@
 const WHATSAPP_URL =
   "https://wa.me/5511945197240?text=" +
   encodeURIComponent(
-    "Olá! Vim através do site da Ciclo Verde e gostaria de conhecer melhor os produtos e serviços.",
+    "Olá! Vim através do site da Ciclo Verde e gostaria de conhecer melhor o projeto acadêmico e a proposta do protótipo.",
   );
 
 /** Botão flutuante de WhatsApp, sempre visível, com animação pulsante. */

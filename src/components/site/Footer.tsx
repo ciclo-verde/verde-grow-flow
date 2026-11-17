@@ -1,10 +1,10 @@
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const WHATSAPP_URL =
   "https://wa.me/5511945197240?text=" +
   encodeURIComponent(
-    "Olá! Vim através do site da Ciclo Verde e gostaria de conhecer melhor os produtos e serviços.",
+    "Olá! Vim através do site da Ciclo Verde e gostaria de conhecer melhor o projeto acadêmico e a proposta do protótipo.",
   );
 
 /** Rodapé com logo, slogan, links rápidos e redes sociais. */
@@ -16,11 +16,11 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <img src={logo} alt="Logo Ciclo Verde" loading="lazy" width={48} height={48} className="h-12 w-12" />
             <span className="font-[family-name:var(--font-display)] text-xl font-semibold">
-              Ciclo Verde
+              CICLO VERDE
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
-            Cultivando sustentabilidade através da tecnologia.
+            Projeto acadêmico de horta sustentável e proposta de irrigação automatizada. Protótipo em desenvolvimento.
           </p>
         </div>
 
@@ -31,8 +31,8 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-primary-foreground/75">
             {[
               { label: "Início", href: "#inicio" },
-              { label: "Produtos", href: "#produtos" },
-              { label: "Benefícios", href: "#beneficios" },
+              { label: "Protótipo", href: "#produtos" },
+              { label: "Sustentabilidade", href: "#beneficios" },
               { label: "Contato", href: "#contato" },
             ].map((l) => (
               <li key={l.href}>
@@ -46,12 +46,11 @@ export function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
-            Redes sociais
+            República do Panamá
           </h3>
+          <p className="mt-4 text-sm text-primary-foreground/70">Escola · Educação e sustentabilidade</p>
           <div className="mt-4 flex gap-3">
             {[
-              { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-              { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
               { icon: MessageCircle, href: WHATSAPP_URL, label: "WhatsApp" },
             ].map(({ icon: Icon, href, label }) => (
               <a
@@ -71,7 +70,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-primary-foreground/10 py-6 text-center text-xs text-primary-foreground/50">
-        © {new Date().getFullYear()} Ciclo Verde. Todos os direitos reservados.
+        © {new Date().getFullYear()} Ciclo Verde. Projeto acadêmico · República do Panamá.
       </div>
     </footer>
   );
