@@ -321,15 +321,19 @@ function Galeria() {
 }
 
 /* ------------------------------- DEPOIMENTOS ------------------------------ */
-const EQUIPE = ["Miguel Roberto", "José", "Kauã Porfírio", "Daniel Costa"];
+const EQUIPE = [
+  { nome: "Miguel Roberto", cargo: "CEO" },
+  { nome: "José Kauã", cargo: "Integrante do projeto" },
+  { nome: "Daniel Costa", cargo: "Integrante do projeto" },
+];
 
 function Equipe() {
   return (
     <section id="equipe" className="bg-background py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionTitle eyebrow="Nossa equipe" title="Quem faz a ideia crescer." text="Integrantes do projeto Ciclo Verde · República do Panamá" />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {EQUIPE.map((nome, index) => <Reveal key={nome} delay={index * 80}><article className="border-t border-border py-7"><div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent font-semibold text-primary">{nome.split(" ").map((part) => part[0]).slice(0, 2).join("")}</div><h3 className="mt-5 text-lg font-semibold text-primary">{nome}</h3><p className="mt-2 text-sm text-muted-foreground">Integrante do projeto</p></article></Reveal>)}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {EQUIPE.map(({ nome, cargo }, index) => <Reveal key={nome} delay={index * 80}><article className="border-t border-border py-7"><div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent font-semibold text-primary">{nome.split(" ").map((part) => part[0]).slice(0, 2).join("")}</div><h3 className="mt-5 text-lg font-semibold text-primary">{nome}</h3><p className="mt-2 text-sm text-muted-foreground">{cargo}</p></article></Reveal>)}
         </div>
       </div>
     </section>
