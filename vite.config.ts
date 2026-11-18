@@ -8,7 +8,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // GitHub Pages build only when GITHUB_PAGES=true (set by .github/workflows/deploy.yml).
 // Lovable preview/publish keep the default SSR build at "/".
-const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const isGitHubPages = process.env["GITHUB_PAGES"] === "true";
 const pagesBase = "/verde-grow-flow/";
 
 export default defineConfig({
