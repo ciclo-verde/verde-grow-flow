@@ -12,3 +12,4 @@
 - Preserve existing single-page section IDs when modernizing content so existing anchor links remain valid.
 - Keep the irrigation demonstration client-only and conceptual, with its sequence in a tested browser-safe module; it must never imply connection to a physical device.
 - Contact forms prepare a message for the existing WhatsApp channel rather than simulate successful delivery; no message is reported as sent before the visitor sends it there.
+- GitHub Pages build is opt-in via GITHUB_PAGES=true (static prerender of "/" under the repo base path, output dist/client); the default build stays SSR so Lovable hosting is unaffected.

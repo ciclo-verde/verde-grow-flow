@@ -6,10 +6,22 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// GitHub Pages build only when GITHUB_PAGES=true (set by .github/workflows/deploy.yml).
+// Lovable preview/publish keep the default SSR build at "/".
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const pagesBase = "/verde-grow-flow/";
+
 export default defineConfig({
+  ...(isGitHubPages ? { vite: { base: pagesBase } } : {}),
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
     server: { entry: "server" },
+    ...(isGitHubPages
+      ? {
+          router: { basepath: pagesBase },
+          pages: [{ path: "/" }],
+          prerender: { enabled: true, autoStaticPathsDiscovery: false },
+        }
+      : {}),
   },
 });
