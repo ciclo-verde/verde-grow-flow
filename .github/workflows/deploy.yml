@@ -29,15 +29,28 @@ jobs:
         run: bun run build
         env:
           GITHUB_PAGES: "true"
-      - name: Prepare Pages folder
+      - name: Locate build output and prepare Pages folder
         run: |
-          cp dist/client/index.html dist/client/404.html
-          touch dist/client/.nojekyll
-          rm -f dist/client/_headers
+          echo "Generated index.html files:"
+          find dist .output -name index.html -not -path "*/node_modules/*" 2>/dev/null || true
+          OUT=""
+          for d in dist/client .output/public dist/public dist; do
+            if [ -f "$d/index.html" ]; then OUT="$d"; break; fi
+          done
+          if [ -z "$OUT" ]; then
+            F=$(find dist .output -name index.html -not -path "*/server/*" 2>/dev/null | head -n1)
+            [ -n "$F" ] && OUT=$(dirname "$F")
+          fi
+          if [ -z "$OUT" ]; then echo "No prerendered index.html found"; ls -R dist .output 2>/dev/null | head -100; exit 1; fi
+          echo "Publishing $OUT"
+          rm -rf _site && cp -r "$OUT" _site
+          cp _site/index.html _site/404.html
+          touch _site/.nojekyll
+          rm -f _site/_headers
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: _site
 
   deploy:
     needs: build
